@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
+import Header from "./header";
 
 
 export default function Home() {
   return (
-    <div className="fotn-bold text-red-400">
-      Page
+    <div className="min-h-screen flex flex-col">
+      This is marketing page
     </div>
   );
 }
