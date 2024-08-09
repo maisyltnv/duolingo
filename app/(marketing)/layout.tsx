@@ -1,13 +1,11 @@
 import React from 'react'
 import Header from './header'
 import Footer from './footer'
-import { auth } from '@clerk/nextjs/server'
 
 type Props = {
     children: React.ReactNode
 }
 const MarketingLayout = ({ children }: Props) => {
-    auth().protect()
     return (
         <div className='min-h-screen flex flex-col'>
             <Header />
