@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button'
 import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
-import { Ghost, Loader } from 'lucide-react'
+import { Loader } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 

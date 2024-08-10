@@ -1,3 +1,4 @@
+import React from "react"; // <-- Add this line
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
@@ -16,9 +17,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  auth().protect()
+  auth().protect();
   return (
-
     <ClerkProvider>
       <html lang="en">
         <body className={font.className}>{children}</body>

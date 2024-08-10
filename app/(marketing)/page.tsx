@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
-import Header from "./header";
-import Image from "next/image";
 
+import { Button } from "@/components/ui/button";
+import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, SignUpButton } from "@clerk/nextjs";
+import { Loader } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -13,6 +14,26 @@ export default function Home() {
         <h1 className="text-xl lg:text-3xl font-bold text-neutral-600 max-w-[480px] text-center">
           Learn, Practice, and master new languages with Lingo
         </h1>
+
+        <div>
+          <ClerkLoading>
+            <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
+          </ClerkLoading>
+
+          <ClerkLoaded>
+            <SignedOut>
+              <SignUpButton mode="modal">
+                <Button size="lg" variant="secondary" className="full">
+                  Get Started
+                </Button>
+              </SignUpButton>
+            </SignedOut>
+
+            <SignedIn>
+
+            </SignedIn>
+          </ClerkLoaded>
+        </div>
       </div>
     </div>
   );
