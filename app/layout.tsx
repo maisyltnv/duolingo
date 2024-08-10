@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -17,7 +16,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  auth().protect();
+  // auth().protect();
   return (
     <ClerkProvider>
       <html lang="en">
