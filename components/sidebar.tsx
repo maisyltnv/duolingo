@@ -3,6 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import SidebarItem from './sidebar-item'
+import { ClerkLoaded, ClerkLoading, UserButton } from '@clerk/nextjs'
+import { Loader } from 'lucide-react'
 
 type Props = {
     className?: string
@@ -24,6 +26,19 @@ const Sidebar = ({ className }: Props) => {
 
             <div className='flex flex-col gap-y-2 flex-1'>
                 <SidebarItem label='Learn' iconSrc='/learn.png' href='/learn' />
+                <SidebarItem label='Learderboard' iconSrc='/learderboard.png' href='/learderboard' />
+                <SidebarItem label='Quests' iconSrc='/quests.png' href='/quests' />
+                <SidebarItem label='Shop' iconSrc='/shop.png' href='/shop' />
+            </div>
+
+            <div className='p-4'>
+                <ClerkLoading>
+                    <Loader className="h-5 w-5 text-muted-foreground animate-spin" />
+                </ClerkLoading>
+
+                <ClerkLoaded>
+                    <UserButton afterSwitchSessionUrl='/' />
+                </ClerkLoaded>
             </div>
         </div>
     )
