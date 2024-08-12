@@ -9,15 +9,16 @@ const LearnPage = () => {
     return (
         <div className='flex flex-row-reverse gap-[48px] px-6'>
             <StrickyWrapper>
-                <UserProgress 
-                activeCourse={{title:"Vietnamese", imageSrc:"/vietFlag.png"}}
-                hearts={5}
-                points={100}
-                hasActiveSubscription={false}/>
+                <UserProgress
+                    activeCourse={{ title: "Vietnamese", imageSrc: "/vietFlag.png" }}
+                    hearts={5}
+                    points={100}
+                    hasActiveSubscription={false} />
             </StrickyWrapper>
 
             <FeedWrapper>
                 <Header title="Vietnamese" />
+
             </FeedWrapper>
         </div>
     )
