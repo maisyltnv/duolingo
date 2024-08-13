@@ -1,17 +1,18 @@
 import { cn } from '@/lib/utils';
 import { Check } from 'lucide-react';
+import Image from 'next/image';
 import React from 'react'
 
 type Props = {
     title: string;
-    id: number;
+    // id: number;
     imageSrc: string;
     onClick: () => void;
     disabled?: boolean;
     active?: boolean;
 };
 
-const Card = ({ title, id, imageSrc, onClick, disabled, active }: Props) => {
+const Card = ({ title, imageSrc, onClick, disabled, active }: Props) => {
     return (
         <div
             onClick={() => onClick}
@@ -28,7 +29,11 @@ const Card = ({ title, id, imageSrc, onClick, disabled, active }: Props) => {
                     )
                 }
             </div>
-            Card
+
+            <Image src={imageSrc} alt={title} width={70} height={93.33} />
+            <p className='text-neutral-700 text-center font-bold mt-3'>
+                {title}
+            </p>
         </div>
     )
 }
