@@ -1,4 +1,4 @@
-'user server';
+'use server';
 import db from '@/db/drizzle';
 import { getCourseById, getUserProgress } from '@/db/query';
 import { UserProgress } from '@/db/schema';
