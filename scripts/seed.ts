@@ -17,6 +17,21 @@ const main = async () => {
         await db.delete(schema.courses);
         await db.delete(schema.UserProgress);
 
+        await db.insert(schema.courses).values([
+            {
+                title: "Vietnames",
+                imageSrc: "/vietFlag.png"
+            },
+            {
+                title: "Lao",
+                imageSrc: "/laoFlag.png"
+            },
+            {
+                title: "English",
+                imageSrc: "/engFlag.png"
+            },
+        ]);
+
         console.log("Seeding finished");
 
     }
