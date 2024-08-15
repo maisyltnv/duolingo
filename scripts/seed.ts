@@ -22,32 +22,47 @@ const main = async () => {
         await db.delete(schema.challengeProgress);
 
         // Insert new records into the courses table
-        await db.insert(schema.courses).values([
-            {
-                id: 1,
-                title: "Vietnamese",
-                imageSrc: "/vietFlag.png"
-            },
-            {
-                id: 2, // Ensure unique ID is provided
-                title: "Lao",
-                imageSrc: "/laoFlag.png"
-            },
-            {
-                id: 3, // Ensure unique ID is provided
-                title: "English",
-                imageSrc: "/engFlag.png"
-            },
-        ]);
+        // await db.insert(schema.courses).values([
+        //     {
+        //         id: 1,
+        //         title: "Vietnamese",
+        //         imageSrc: "/vietFlag.png"
+        //     },
+        //     {
+        //         id: 2, // Ensure unique ID is provided
+        //         title: "Lao",
+        //         imageSrc: "/laoFlag.png"
+        //     },
+        //     {
+        //         id: 3, // Ensure unique ID is provided
+        //         title: "English",
+        //         imageSrc: "/engFlag.png"
+        //     },
+        // ]);
 
         // Insert new records into the units table
-        await db.insert(schema.units).values([
+        // await db.insert(schema.units).values([
+        //     {
+        //         id: 1,
+        //         title: "Unit 1",
+        //         description: "Unit 1 description",
+        //         courseId: 1,
+        //         order: 1,
+        //     },
+        // ]);
+
+        await db.insert(schema.lessons).values([
             {
                 id: 1,
-                courseId: 1,
-                title: "test unit",
-                description: "Learn the basics of the Vietnamese",
+                title: "Noun1",
+                unitId: 1,
                 order: 1,
+            },
+            {
+                id: 2,
+                title: "Verbs",
+                unitId: 1,
+                order: 2,
             },
         ]);
 
