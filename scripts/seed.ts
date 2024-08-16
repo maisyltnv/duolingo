@@ -14,42 +14,42 @@ const main = async () => {
 
         // Delete all existing records in the tables
         await db.delete(schema.courses);
-        await db.delete(schema.UserProgress);
+        await db.delete(schema.userProgress);
         await db.delete(schema.units);
         await db.delete(schema.lessons);
         await db.delete(schema.challenges);
         await db.delete(schema.challengeOptions);
         await db.delete(schema.challengeProgress);
 
-        // Insert new records into the courses table
-        // await db.insert(schema.courses).values([
-        //     {
-        //         id: 1,
-        //         title: "Vietnamese",
-        //         imageSrc: "/vietFlag.png"
-        //     },
-        //     {
-        //         id: 2, // Ensure unique ID is provided
-        //         title: "Lao",
-        //         imageSrc: "/laoFlag.png"
-        //     },
-        //     {
-        //         id: 3, // Ensure unique ID is provided
-        //         title: "English",
-        //         imageSrc: "/engFlag.png"
-        //     },
-        // ]);
 
-        // Insert new records into the units table
-        // await db.insert(schema.units).values([
-        //     {
-        //         id: 1,
-        //         title: "Unit 1",
-        //         description: "Unit 1 description",
-        //         courseId: 1,
-        //         order: 1,
-        //     },
-        // ]);
+        await db.insert(schema.courses).values([
+            {
+                id: 1,
+                title: "Vietnamese",
+                imageSrc: "/vietFlag.png"
+            },
+            {
+                id: 2, // Ensure unique ID is provided
+                title: "Lao",
+                imageSrc: "/laoFlag.png"
+            },
+            {
+                id: 3, // Ensure unique ID is provided
+                title: "English",
+                imageSrc: "/engFlag.png"
+            },
+        ]);
+
+
+        await db.insert(schema.units).values([
+            {
+                id: 1,
+                title: "Unit 1",
+                description: "Unit 1 description",
+                courseId: 1,
+                order: 1,
+            },
+        ]);
 
         await db.insert(schema.lessons).values([
             {

@@ -8,14 +8,14 @@ export const courses = pgTable("courses", {
 })
 
 export const coursesRelations = relations(courses, ({ many }) => ({
-    UserProgress: many(UserProgress),
+    userProgress: many(userProgress),
     units: many(units),
 }))
 
 export const units = pgTable("units", {
     id: serial("id").primaryKey(),
     title: text("title").notNull(),
-    description: text("title").notNull(),
+    description: text("description").notNull(),
     courseId: integer("course_id").notNull().references(() => courses.id, { onDelete: 'cascade' }),
     order: integer("order").notNull(),
 })
@@ -47,7 +47,7 @@ export const lessonsRelations = relations(lessons, ({ one, many }) => ({
 
 export const challengesEnum = pgEnum("type", ["SELECT", "ASSET"]);
 
-export const challenges = pgTable("lessons", {
+export const challenges = pgTable("challenges", {
     id: serial("id").primaryKey(),
     lessonId: integer("lesson_id").notNull().references(() => lessons.id, { onDelete: 'cascade' }),
     type: challengesEnum("type").notNull(),
@@ -67,16 +67,16 @@ export const challengeRelations = relations(challenges, ({ one, many }) => ({
 
 export const challengeOptions = pgTable("challenge_options", {
     id: serial("id").primaryKey(),
-    chalengeId: integer("chalenge_id").notNull().references(() => challenges.id, { onDelete: 'cascade' }),
+    challengeId: integer("challenge_id").notNull().references(() => challenges.id, { onDelete: 'cascade' }),
     text: text("text").notNull(),
-    correct: boolean("isCorrect").notNull(),
-    imageSrc: text("imageSrc"),
-    audioSrc: text("audioSrc"),
+    correct: boolean("correct").notNull(),
+    imageSrc: text("image_src"),
+    audioSrc: text("audio_src"),
 })
 
 export const challengeOptionsRelations = relations(challengeOptions, ({ one }) => ({
     challenge: one(challenges, {
-        fields: [challengeOptions.chalengeId],
+        fields: [challengeOptions.challengeId],
         references: [challenges.id],
     }),
 }))
@@ -98,7 +98,7 @@ export const challengeProgressReslations = relations(challengeProgress, ({ one }
 }))
 
 
-export const UserProgress = pgTable("user_progress", {
+export const userProgress = pgTable("user_progress", {
     userId: text("user_id").primaryKey(),
     userName: text('user_name').notNull().default('User'),
     userImageSrc: text('user_image_src').notNull().default('/logo.png'),
@@ -107,9 +107,9 @@ export const UserProgress = pgTable("user_progress", {
     points: integer("points").notNull().default(0),
 })
 
-export const UserProgressRelations = relations(UserProgress, ({ one }) => ({
+export const userProgressRelations = relations(userProgress, ({ one }) => ({
     activeCourse: one(courses, {
-        fields: [UserProgress.activeCourseId],
+        fields: [userProgress.activeCourseId],
         references: [courses.id],
     })
 }))
