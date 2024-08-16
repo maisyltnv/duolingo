@@ -1,5 +1,5 @@
 'use client'
-import { courses, UserProgress } from '@/db/schema'
+import { courses, userProgress } from '@/db/schema'
 import React, { useTransition } from 'react'
 import Card from './card';
 
@@ -9,7 +9,7 @@ import { toast } from 'sonner';
 
 type Props = {
     courses: typeof courses.$inferSelect[];
-    activeCourseId?: typeof UserProgress.$inferSelect.activeCourseId;
+    activeCourseId?: typeof userProgress.$inferSelect.activeCourseId;
 }
 const List = ({ courses, activeCourseId }: Props) => {
     const router = useRouter();

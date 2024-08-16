@@ -58,13 +58,53 @@ const main = async () => {
                 unitId: 1,
                 order: 1,
             },
+            // {
+            //     id: 2,
+            //     title: "Verbs",
+            //     unitId: 1,
+            //     order: 2,
+            // },
+        ]);
+
+        await db.insert(schema.challenges).values([
+            {
+                id: 1,
+                lessonId: 1,
+                type: "SELECT",
+                order: 1,
+                question: 'Which one of these is the "the man"',
+            },
+
+        ]);
+
+        await db.insert(schema.challengeOptions).values([
+            {
+                id: 1,
+                challengeId: 1,
+                imageSrc: "/man.png",
+                correct: true,
+                text: "The man",
+                audioSrc: "/man.mp3",
+            },
             {
                 id: 2,
-                title: "Verbs",
-                unitId: 1,
-                order: 2,
+                challengeId: 1,
+                imageSrc: "/woman.png",
+                correct: true,
+                text: "The Woman",
+                audioSrc: "/woman.mp3",
             },
+            {
+                id: 3,
+                challengeId: 1,
+                imageSrc: "/robot.png",
+                correct: true,
+                text: "The robot",
+                audioSrc: "/robot.mp3",
+            },
+
         ]);
+
 
         console.log("Seeding finished successfully");
 
