@@ -1,7 +1,7 @@
 'use server';
 import db from '@/db/drizzle';
 import { getCourseById, getUserProgress } from '@/db/query';
-import { UserProgress } from '@/db/schema';
+import { userProgress } from '@/db/schema';
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
@@ -28,7 +28,7 @@ export const upsertUserProgress = async (courseId: number) => {
 
     if (existingUserProgress) {
         await db
-            .update(UserProgress)
+            .update(userProgress)
             .set({
                 activeCourseId: course.id,
                 userName: user.firstName || "User",
@@ -39,7 +39,7 @@ export const upsertUserProgress = async (courseId: number) => {
         redirect('/learn');
     }
     await db
-        .insert(UserProgress)
+        .insert(userProgress)
         .values({
             userId,
             userName: user.firstName || "User",
