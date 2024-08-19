@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { NotebookText } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
-import LessonButton from './lesson-button';
 
 type Props = {
     title: string;
@@ -20,26 +19,6 @@ const UnitBanner = ({ title, description }: Props) => {
             <Link href={'/lesson'}>
                 <Button size={"lg"} variant={"secondary"} className='hidden xl:flex border-2 border-b-4 active:border-b-2'>
                     <NotebookText className='mr-2' />
-                    <div className='flex items-center flex-col relative'>
-                        {lessons.map((lesson,index) => {
-
-                            const isCurrent = lesson.id === activeLesson?.id;
-                            const isLocked = !lesson.completed && !isCurrent;
-
-                            return (
-                                <LessonButton 
-                                key={lesson.id}
-                                id={lesson.id}
-                                index={index}
-                                totalCount={lessons.length -1}
-                                locked={isLocked}
-                                current={isCurrent}
-                                percentage={lesson.percentage}
-                                />
-                            )
-                        }
-                        )}
-                    </div>
                 </Button>
             </Link>
         </div>
