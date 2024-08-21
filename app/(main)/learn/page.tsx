@@ -6,7 +6,7 @@ import UserProgress from '@/components/user-progress'
 import { getCourseProgress, getLessonPercentage, getUnits, getUserProgress } from '@/db/query'
 import { redirect } from 'next/navigation'
 import Unit from './unit'
-import { lessons,units as unitsChema} from '@/db/schema'
+import { lessons, units as unitsChema } from '@/db/schema'
 
 
 const LearnPage = async () => {
@@ -15,7 +15,7 @@ const LearnPage = async () => {
     const lessonPercentageData = getLessonPercentage();
     const unitData = getUnits();
     const [
-        userProgress, 
+        userProgress,
         units,
         courseProgress,
         lessonPercentage
@@ -27,7 +27,7 @@ const LearnPage = async () => {
         redirect('/courses')
     }
 
-    if(!courseProgress) {
+    if (!courseProgress) {
         redirect('/courses')
     }
     const activeCourse = userProgress.activeCourse || { id: 0, title: 'Unknown Course', imageSrc: '' };
@@ -48,16 +48,16 @@ const LearnPage = async () => {
                 {units.map((unit) => (
                     <div key={unit.id}>
 
-                        <Unit 
-                        id={unit.id}
-                        order={unit.order}
-                        description={unit.description}
-                        title={unit.title}
-                        lessons = {unit.lessons}
-                        activeLesson={courseProgress?.activeLesson as typeof lessons.$inferInsert & {
-                            unit: typeof unitsChema.$inferInsert;
-                        } | undefined}
-                        activeLessonPercentage={lessonPercentage}
+                        <Unit
+                            id={unit.id}
+                            order={unit.order}
+                            description={unit.description}
+                            title={unit.title}
+                            lessons={unit.lessons}
+                            activeLesson={courseProgress?.activeLesson as typeof lessons.$inferInsert & {
+                                unit: typeof unitsChema.$inferInsert;
+                            } | undefined}
+                            activeLessonPercentage={lessonPercentage}
                         />
                     </div>
                 ))}
